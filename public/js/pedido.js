@@ -170,7 +170,7 @@ form.addEventListener('submit', async (ev) => {
       }),
     });
     const res = await r.json().catch(() => ({}));
-    if (!r.ok || !res.url) throw new Error(res.error || 'sin respuesta');
+    if (!r.ok || !res.url) throw new Error([res.error, res.detalle].filter(Boolean).join(': ') || 'sin respuesta');
     location.href = res.url;
   } catch (e) {
     console.error('Mercado Pago:', e);

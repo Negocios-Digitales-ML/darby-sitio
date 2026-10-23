@@ -65,7 +65,7 @@ export default async (req) => {
   const datos = await r.json().catch(() => ({}));
   if (!r.ok) {
     console.error('Mercado Pago rechazó la preferencia', r.status, JSON.stringify(datos));
-    return json({ error: 'Mercado Pago no respondió, intenta de nuevo' }, 502);
+    return json({ error: 'Mercado Pago no respondió, intenta de nuevo', detalle: datos.message || datos.error || `HTTP ${r.status}` }, 502);
   }
 
   const prueba = token.startsWith('TEST-');
