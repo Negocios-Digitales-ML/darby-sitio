@@ -16,7 +16,7 @@ export default async (req) => {
   let body;
   try { body = await req.json(); } catch { return json({ error: 'Datos inválidos' }, 400); }
 
-  const { folio, paquete, extras = [], modalidad, nombre = '', email = '' } = body;
+  const { folio, paquete, extras = [], modalidad } = body;
   if (!PAQUETES[paquete]) return json({ error: 'Paquete no válido' }, 400);
   if (typeof folio !== 'string' || !/^DB-\d{6}-[A-Z0-9]{4}$/.test(folio)) return json({ error: 'Folio no válido' }, 400);
   if (!Array.isArray(extras)) return json({ error: 'Extras no válidos' }, 400);
@@ -46,7 +46,8 @@ export default async (req) => {
     },
     statement_descriptor: 'DARBY INVITACIONES',
   };
-  if (/^\S+@\S+\.\S+$/.test(email)) preferencia.payer = { email, name: String(nombre).slice(0, 80) };
+  // No mandamos el correo del cliente como "payer": con credenciales de prueba, un correo real
+  // hace que Mercado Pago rechace el cobro. El cliente lo escribe en la página de pago y ya lo tenemos en Netlify Forms.
   // Mercado Pago solo acepta regreso automático y avisos hacia direcciones https públicas.
   if (publico) {
     preferencia.auto_return = 'approved';
