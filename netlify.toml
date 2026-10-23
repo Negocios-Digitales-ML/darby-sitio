@@ -1,0 +1,26 @@
+# Configuración de Netlify para Darby.
+# Todo lo que está en "public" se publica tal cual:
+#   public/miguelyarely/index.html  ->  tudominio.com/miguelyarely
+[build]
+  publish = "public"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+# Las invitaciones y el sitio se pueden mostrar en WhatsApp y redes con su vista previa.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"

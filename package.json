@@ -1,0 +1,6 @@
+{
+  "name": "darby-sitio",
+  "private": true,
+  "type": "module",
+  "description": "Sitio de ventas de Darby e invitaciones publicadas en public/<nombre>/"
+}

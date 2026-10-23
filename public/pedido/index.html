@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Haz tu pedido · Darby</title>
+<meta name="description" content="Elige tu paquete de invitación digital y paga con tarjeta o transferencia.">
+<meta name="theme-color" content="#5b1a2e">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/img/icono.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Gloock&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/sitio.css">
+<link rel="stylesheet" href="/css/pedido.css">
+<script type="module" src="/js/sitio.js"></script>
+<script type="module" src="/js/pedido.js"></script>
+</head>
+<body>
+
+<header class="encabezado">
+  <div class="contenedor">
+    <a class="marca" href="/" aria-label="Darby, inicio">Darby<span>.</span></a>
+    <nav class="menu" aria-label="Principal">
+      <a href="/#paquetes">Paquetes</a>
+      <a href="/#preguntas">Preguntas</a>
+      <a class="btn btn-borde" href="#" data-wa="Hola, tengo una duda antes de hacer mi pedido.">Ayuda por WhatsApp</a>
+    </nav>
+  </div>
+</header>
+
+<main class="contenedor">
+  <div class="pagina-titulo" id="titulo">
+    <h1>Haz tu pedido</h1>
+    <p>Elige tu paquete, cuéntanos de tu evento y paga. Después nos mandas tus fotos por WhatsApp.</p>
+  </div>
+
+  <!-- El formulario se guarda en Netlify Forms (te llega un correo por cada pedido). -->
+  <form id="pedido" class="pedido" name="pedidos" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+    <input type="hidden" name="form-name" value="pedidos">
+    <input type="hidden" name="folio">
+    <input type="hidden" name="total">
+    <input type="hidden" name="a_pagar">
+    <input type="hidden" name="extras_lista">
+    <input type="hidden" name="paquete_elegido">
+    <p class="sr"><label>No llenar <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+    <div class="pasos-form">
+      <fieldset class="bloque">
+        <legend><h2>Paquete</h2></legend>
+        <div class="opciones-paquete" id="opciones-paquete"></div>
+        <div class="modalidad" id="modalidad" hidden>
+          <p class="etq">¿Cuánto quieres pagar hoy?</p>
+          <label class="pastilla"><input type="radio" name="modalidad" value="completo" checked><span>Pago completo</span></label>
+          <label class="pastilla"><input type="radio" name="modalidad" value="anticipo"><span>50% de anticipo</span></label>
+          <p class="ayuda">Con anticipo, el resto se paga antes de publicar tu invitación.</p>
+        </div>
+      </fieldset>
+
+      <fieldset class="bloque">
+        <legend><h2>Extras <span class="opcional">opcional</span></h2></legend>
+        <div class="lista-extras" id="lista-extras"></div>
+      </fieldset>
+
+      <fieldset class="bloque">
+        <legend><h2>Tu evento</h2></legend>
+        <div class="campos">
+          <label class="campo">
+            <span>Tipo de evento</span>
+            <select name="tipo_evento" required>
+              <option value="">Elige uno</option>
+              <option>Boda</option><option>XV años</option><option>Bautizo</option>
+              <option>Primera comunión</option><option>Baby shower</option><option>Cumpleaños</option>
+              <option>Graduación</option><option>Evento de empresa</option><option>Otro</option>
+            </select>
+          </label>
+          <label class="campo">
+            <span>Fecha del evento</span>
+            <input type="date" name="fecha_evento" required>
+          </label>
+          <label class="campo ancho">
+            <span>Nombres en la invitación</span>
+            <input name="nombres_evento" placeholder="Ana y Luis" required autocomplete="off">
+          </label>
+          <label class="campo">
+            <span>Ciudad</span>
+            <input name="ciudad" placeholder="Puebla, Pue." autocomplete="address-level2">
+          </label>
+          <div class="campo ancho">
+            <label for="slug">Dirección de tu invitación</label>
+            <div class="url-campo">
+              <span class="url-pre"><span class="dom-pedido">darby.mx</span>/</span>
+              <input id="slug" name="direccion" placeholder="anayluis" required autocomplete="off" autocapitalize="none" spellcheck="false" pattern="[a-z0-9-]{3,40}">
+            </div>
+            <span class="ayuda" id="slug-ayuda">Solo minúsculas, números y guiones. Te confirmamos que esté disponible.</span>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="bloque">
+        <legend><h2>Tus datos</h2></legend>
+        <div class="campos">
+          <label class="campo ancho">
+            <span>Nombre completo</span>
+            <input name="nombre" required autocomplete="name">
+          </label>
+          <label class="campo">
+            <span>WhatsApp</span>
+            <input type="tel" name="whatsapp" required autocomplete="tel" inputmode="tel" placeholder="10 dígitos">
+          </label>
+          <label class="campo">
+            <span>Correo</span>
+            <input type="email" name="email" required autocomplete="email" placeholder="para tu recibo">
+          </label>
+          <label class="campo ancho">
+            <span>Algo que debamos saber <span class="opcional">opcional</span></span>
+            <textarea name="notas" rows="3" placeholder="Colores, estilo, canción, ideas…"></textarea>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="bloque">
+        <legend><h2>Forma de pago</h2></legend>
+        <div class="metodos">
+          <label class="metodo" id="metodo-tarjeta">
+            <input type="radio" name="metodo_pago" value="tarjeta" checked>
+            <span class="metodo-caja">
+              <svg aria-hidden="true"><use href="/img/iconos.svg#tarjeta"/></svg>
+              <b>Tarjeta</b>
+              <small>Crédito o débito con Mercado Pago</small>
+            </span>
+          </label>
+          <label class="metodo">
+            <input type="radio" name="metodo_pago" value="transferencia">
+            <span class="metodo-caja">
+              <svg aria-hidden="true"><use href="/img/iconos.svg#banco"/></svg>
+              <b>Transferencia</b>
+              <small>SPEI, te damos la CLABE</small>
+            </span>
+          </label>
+        </div>
+        <label class="acepto">
+          <input type="checkbox" name="acepto_terminos" value="si" required>
+          <span>Acepto los <a href="/terminos/" target="_blank">términos</a> y el <a href="/privacidad/" target="_blank">aviso de privacidad</a>.</span>
+        </label>
+      </fieldset>
+    </div>
+
+    <aside class="resumen" aria-live="polite">
+      <div class="resumen-caja">
+        <h2>Tu pedido</h2>
+        <ul id="conceptos"></ul>
+        <div class="fila total"><span>Total</span><b id="total">$0</b></div>
+        <div class="fila hoy" id="fila-hoy" hidden><span>Pagas hoy</span><b id="hoy">$0</b></div>
+        <p class="error" id="error" role="alert" hidden></p>
+        <button class="btn btn-vino" id="enviar" type="submit">Continuar</button>
+        <p class="seguro"><svg aria-hidden="true"><use href="/img/iconos.svg#candado"/></svg><span id="seguro-txt">Pago seguro en Mercado Pago</span></p>
+      </div>
+    </aside>
+  </form>
+
+  <!-- Se muestra al elegir transferencia -->
+  <section class="listo" id="listo" hidden tabindex="-1">
+    <div class="listo-caja">
+      <p class="folio">Folio <b id="l-folio"></b></p>
+      <h2>Tu pedido está apartado</h2>
+      <p class="intro">Transfiere <b id="l-monto"></b> a esta cuenta y mándanos el comprobante por WhatsApp. Empezamos en cuanto lo recibamos.</p>
+      <dl class="banco">
+        <div><dt>Banco</dt><dd id="l-banco"></dd></div>
+        <div><dt>Titular</dt><dd id="l-titular"></dd></div>
+        <div><dt>CLABE</dt><dd><span id="l-clabe"></span> <button type="button" class="copiar" data-copiar="l-clabe">Copiar</button></dd></div>
+        <div id="l-tarjeta-fila" hidden><dt>Tarjeta para depósito</dt><dd><span id="l-tarjeta"></span> <button type="button" class="copiar" data-copiar="l-tarjeta">Copiar</button></dd></div>
+        <div><dt>Concepto</dt><dd><span id="l-concepto"></span> <button type="button" class="copiar" data-copiar="l-concepto">Copiar</button></dd></div>
+      </dl>
+      <a class="btn btn-wa" id="l-wa" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="/img/iconos.svg#wa"/></svg>Enviar comprobante por WhatsApp</a>
+      <p class="ayuda">Guardamos tu pedido con el folio. Si cierras esta página, escríbenos con tu folio y te ayudamos.</p>
+    </div>
+  </section>
+
+  <!-- Formulario oculto: aquí llegan los pagos con tarjeta confirmados por Mercado Pago -->
+  <form name="pagos" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input name="folio"><input name="estado"><input name="monto"><input name="id_pago"><input name="correo_pagador"><input name="detalle"><input name="bot-field">
+  </form>
+</main>
+
+<footer class="pie">
+  <div class="contenedor">
+    <a class="marca" href="/">Darby<span>.</span></a>
+    <nav aria-label="Pie de página">
+      <a href="/terminos/">Términos</a>
+      <a href="/privacidad/">Aviso de privacidad</a>
+      <a href="#" data-wa>WhatsApp</a>
+    </nav>
+    <p>© <span data-anio></span> Darby. Hecho en México.</p>
+  </div>
+</footer>
+</body>
+</html>
