@@ -48,3 +48,12 @@ if (folio) { $('#r-folio').hidden = false; $('#r-folio b').textContent = folio; 
 $('#r-wa').href = enlaceWhatsApp(t.wa);
 $('#r-wa span').textContent = t.boton;
 if (t.otro) { $('#r-otro').textContent = t.otro.texto; $('#r-otro').href = t.otro.href; }
+
+// Resumen del pedido guardado en este navegador
+if (pedido.folio === folio && Array.isArray(pedido.resumen)) {
+  const dl = $('#r-resumen');
+  const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  dl.innerHTML = pedido.resumen.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v || '—')}</dd></div>`).join('')
+    + (pedido.esAnticipo ? `<div><dt>Pendiente</dt><dd>${pesos(pedido.total - pedido.aPagar)} al aprobar tu invitación</dd></div>` : '');
+  dl.hidden = false;
+}

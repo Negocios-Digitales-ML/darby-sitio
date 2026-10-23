@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Darby · Invitaciones digitales para bodas, XV años y todo evento</title>
-<meta name="description" content="Invitaciones web con confirmación por WhatsApp, mapa, música y mesa de regalos. Para bodas, XV años, bautizos y todo tipo de eventos en México. Desde $590.">
+<meta name="description" content="Invitaciones web con confirmación por WhatsApp, mapa, música y mesa de regalos. Ves tu invitación antes de liquidar. Para bodas, XV años, bautizos y todo evento en México. Desde $590.">
 <meta name="theme-color" content="#5b1a2e">
 <meta property="og:title" content="Darby · Invitaciones digitales">
 <meta property="og:description" content="Tu invitación con su propia dirección web, lista para compartir por WhatsApp. Desde $590.">
@@ -13,51 +13,64 @@
 <link rel="icon" href="/img/icono.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Gloock&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Gloock&family=Pinyon+Script&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/sitio.css">
 <script type="module" src="/js/sitio.js"></script>
 </head>
 <body>
 
+<a class="saltar" href="#principal">Saltar al contenido</a>
+
 <header class="encabezado">
   <div class="contenedor">
     <a class="marca" href="/" aria-label="Darby, inicio">Darby<span>.</span></a>
     <nav class="menu" aria-label="Principal">
-      <a href="#incluye">Qué incluye</a>
+      <a href="#disenos">Diseños</a>
+      <a href="#confianza">Cómo pagas</a>
       <a href="#paquetes">Paquetes</a>
-      <a href="#como">Cómo funciona</a>
       <a href="#preguntas">Preguntas</a>
       <a class="btn btn-vino" href="/pedido/">Hacer mi pedido</a>
     </nav>
   </div>
 </header>
 
-<main>
+<main id="principal">
+  <!-- Hero interactivo: el visitante escribe sus nombres y ve su invitación -->
   <section class="hero">
     <div class="contenedor">
-      <div>
+      <div class="hero-texto">
         <h1>Tu invitación, con su propia dirección.</h1>
-        <p class="intro">Invitaciones web para bodas, XV años y cualquier celebración. La mandas por WhatsApp y tus invitados ven el mapa, escuchan su canción y te confirman en un toque.</p>
+        <p class="intro">Invitaciones web para bodas, XV años y cualquier celebración. Tus invitados ven el mapa, escuchan su canción y te confirman por WhatsApp en un toque.</p>
+
+        <div class="probador" role="group" aria-labelledby="probador-titulo">
+          <p class="probador-titulo" id="probador-titulo">Pruébalo con tu evento</p>
+          <div class="chips" id="chips-evento" role="radiogroup" aria-label="Tipo de evento"></div>
+          <label class="probador-campo">
+            <span class="sr">Nombres para tu invitación</span>
+            <input id="probador-nombres" placeholder="Escribe los nombres" maxlength="28" autocomplete="off">
+          </label>
+        </div>
+
         <div class="hero-acciones">
-          <a class="btn btn-vino" href="#paquetes">Ver paquetes desde $590</a>
-          <a class="btn btn-borde" href="/anayluis/">Ver una invitación de ejemplo</a>
+          <a class="btn btn-vino" href="/pedido/" id="hero-pedir">Quiero esta invitación</a>
+          <a class="btn btn-borde" href="#disenos">Ver diseños</a>
         </div>
         <ul class="hero-datos">
+          <li><svg aria-hidden="true"><use href="/img/iconos.svg#check"/></svg>Ves tu invitación antes de liquidar</li>
+          <li><svg aria-hidden="true"><use href="/img/iconos.svg#check"/></svg>Pago protegido con Mercado Pago</li>
           <li><svg aria-hidden="true"><use href="/img/iconos.svg#check"/></svg>Lista en 48 horas</li>
-          <li><svg aria-hidden="true"><use href="/img/iconos.svg#check"/></svg>Paga con tarjeta o transferencia</li>
-          <li><svg aria-hidden="true"><use href="/img/iconos.svg#check"/></svg>Atención por WhatsApp</li>
         </ul>
       </div>
 
-      <div class="escena" id="escena" aria-label="Ejemplo de invitación en un celular" role="img">
-        <div class="telefono">
+      <div class="escena" id="escena">
+        <div class="telefono" aria-hidden="true">
           <div class="pantalla">
-            <div class="barra-url" aria-hidden="true">
+            <div class="barra-url">
               <svg><use href="/img/iconos.svg#candado"/></svg>
               <span><span class="dom">darby.mx</span>/<span class="slug" id="slug"></span></span><span class="cursor"></span>
             </div>
             <div class="sobre-zona">
-              <div class="tarjeta-inv" id="tarjeta" aria-hidden="true">
+              <div class="tarjeta-inv" id="tarjeta">
                 <svg class="inv-adorno"><use href="/img/iconos.svg#flor"/></svg>
                 <p class="inv-etiqueta" id="inv-etiqueta">Nos casamos</p>
                 <p class="inv-nombres" id="inv-nombres">Ana &amp; Luis</p>
@@ -70,7 +83,7 @@
                 <p class="inv-lugar" id="inv-lugar">Hacienda Santa Cruz · Puebla</p>
                 <span class="inv-boton">Confirmar asistencia</span>
               </div>
-              <div class="sobre" aria-hidden="true">
+              <div class="sobre">
                 <div class="fondo"></div>
                 <div class="solapa"></div>
                 <div class="frente"></div>
@@ -79,26 +92,98 @@
             </div>
           </div>
         </div>
-        <div class="escena-pie" aria-hidden="true">
+        <div class="escena-pie" id="aviso-rsvp" aria-hidden="true">
           <svg><use href="/img/iconos.svg#wa"/></svg>
-          <div><b>Tía Lupe confirmó</b>4 personas asistirán</div>
+          <div><b id="aviso-quien">Tía Lupe confirmó</b><span id="aviso-cuantos">4 personas asistirán</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="eventos">
+  <!-- Franja en movimiento con los eventos -->
+  <div class="cinta" aria-label="Eventos: bodas, XV años, bautizos, primeras comuniones, baby showers, cumpleaños, graduaciones y eventos de empresa">
+    <div class="cinta-pista" aria-hidden="true">
+      <span>Bodas</span><i></i><span>XV años</span><i></i><span>Bautizos</span><i></i><span>Primeras comuniones</span><i></i><span>Baby showers</span><i></i><span>Cumpleaños</span><i></i><span>Graduaciones</span><i></i><span>Eventos de empresa</span><i></i>
+      <span>Bodas</span><i></i><span>XV años</span><i></i><span>Bautizos</span><i></i><span>Primeras comuniones</span><i></i><span>Baby showers</span><i></i><span>Cumpleaños</span><i></i><span>Graduaciones</span><i></i><span>Eventos de empresa</span><i></i>
+    </div>
+  </div>
+
+  <!-- Confianza: cómo se cuida el dinero del cliente -->
+  <section class="seccion confianza" id="confianza">
     <div class="contenedor">
-      <p class="grande">Bodas, <em>XV años</em>, bautizos, primeras comuniones, baby showers, cumpleaños, graduaciones y eventos de empresa.</p>
-      <p class="chico">Cada invitación vive en su propia página, por ejemplo <b>darby.mx/sofiaxv</b>. No es una imagen que se pierde en el chat: tus invitados la vuelven a abrir el día del evento para llegar al lugar.</p>
+      <div class="confianza-cabeza">
+        <h2>Primero ves tu invitación. Después la liquidas.</h2>
+        <p class="intro">Sabemos que da miedo pagar por internet a alguien que no conoces. Por eso nadie paga el total a ciegas: apartas con la mitad y el resto lo pagas solo cuando tu invitación te encanta.</p>
+      </div>
+
+      <ol class="ruta">
+        <li>
+          <span class="ruta-monto">50%</span>
+          <h3>Apartas tu fecha</h3>
+          <p>Pagas la mitad con tarjeta o transferencia y te llega un folio con el detalle de tu pedido.</p>
+        </li>
+        <li>
+          <span class="ruta-monto">48 h</span>
+          <h3>Te mandamos tu invitación</h3>
+          <p>Te escribimos por WhatsApp para pedir tus datos y fotos, y en 48 horas ves tu invitación funcionando en tu celular.</p>
+        </li>
+        <li>
+          <span class="ruta-monto">Cambios</span>
+          <h3>La ajustamos contigo</h3>
+          <p>Nos dices qué cambiar: textos, colores, fotos o música. Premium incluye dos rondas y Deluxe atención hasta tu evento.</p>
+        </li>
+        <li>
+          <span class="ruta-monto">50%</span>
+          <h3>Liquidas y la compartes</h3>
+          <p>Cuando la apruebas, pagas el resto y te damos tu enlace para mandarlo a tus invitados.</p>
+        </li>
+      </ol>
+
+      <ul class="garantias">
+        <li>
+          <svg aria-hidden="true"><use href="/img/iconos.svg#escudo"/></svg>
+          <div><h3>Garantía de entrega</h3><p data-config="garantia">Si no entregamos tu primera versión en el tiempo de tu paquete, te devolvemos el 100% de tu pago.</p></div>
+        </li>
+        <li>
+          <svg aria-hidden="true"><use href="/img/iconos.svg#candado"/></svg>
+          <div><h3>Pago con tarjeta protegido</h3><p>El cobro lo hace Mercado Pago en su propia página. Nosotros nunca vemos ni guardamos los datos de tu tarjeta.</p></div>
+        </li>
+        <li>
+          <svg aria-hidden="true"><use href="/img/iconos.svg#banco"/></svg>
+          <div><h3>Transferencias a nuestro nombre</h3><p>Solo te pediremos transferir a la cuenta a nombre de <b data-config="titularVisible">nuestro responsable</b>. Si alguien te da otra cuenta, no es de Darby.</p></div>
+        </li>
+        <li>
+          <svg aria-hidden="true"><use href="/img/iconos.svg#recibo"/></svg>
+          <div><h3>Recibo con folio</h3><p>Cada pedido tiene un folio y un comprobante que puedes guardar o imprimir, con lo que pagaste y lo que falta.</p></div>
+        </li>
+      </ul>
     </div>
   </section>
 
+  <!-- Galería de diseños -->
+  <section class="seccion disenos" id="disenos">
+    <div class="contenedor">
+      <div class="disenos-cabeza">
+        <div>
+          <h2>Diseños para cada celebración</h2>
+          <p class="intro">Elige un diseño y lo adaptamos a tus colores, tus fotos y tu estilo. Los que dicen "Ver ejemplo" los puedes abrir como lo haría un invitado.</p>
+        </div>
+        <div class="chips chips-filtro" id="filtro-disenos" role="radiogroup" aria-label="Filtrar diseños"></div>
+      </div>
+    </div>
+    <div class="galeria" id="galeria" tabindex="0" aria-label="Diseños de invitación"></div>
+    <div class="contenedor galeria-controles">
+      <button class="flecha" type="button" data-mover="-1" aria-label="Diseños anteriores"><svg aria-hidden="true"><use href="/img/iconos.svg#izquierda"/></svg></button>
+      <button class="flecha" type="button" data-mover="1" aria-label="Más diseños"><svg aria-hidden="true"><use href="/img/iconos.svg#derecha"/></svg></button>
+    </div>
+  </section>
+
+  <!-- Lo que incluye -->
   <section class="seccion incluye" id="incluye">
     <div class="contenedor">
       <div class="pegado">
         <h2>Todo lo que tus invitados necesitan, en un enlace.</h2>
-        <p class="intro">Se ve perfecto en cualquier celular y no hay que descargar nada.</p>
+        <p class="intro">Se ve perfecto en cualquier celular y no hay que descargar nada. No es una imagen que se pierde en el chat: el día del evento tus invitados la vuelven a abrir para llegar.</p>
       </div>
       <ul class="lista-funciones">
         <li><span class="ico"><svg aria-hidden="true"><use href="/img/iconos.svg#rsvp"/></svg></span><h3>Confirmación por WhatsApp</h3><p>El invitado escribe su nombre y cuántos van, y el mensaje te llega listo a tu WhatsApp.</p></li>
@@ -113,25 +198,22 @@
     </div>
   </section>
 
-  <section class="seccion demo">
-    <div class="contenedor">
-      <div class="demo-caja">
-        <div>
-          <h2>Ábrela como la verían tus invitados.</h2>
-          <p>Esta es una invitación de ejemplo publicada en <code id="demo-url">darby.mx/anayluis</code>. Así se verá la tuya, con tus nombres, tus fotos y tu fecha.</p>
-        </div>
-        <a class="btn btn-vino" href="/anayluis/">Abrir el ejemplo</a>
-      </div>
-    </div>
-  </section>
-
+  <!-- Paquetes -->
   <section class="seccion paquetes" id="paquetes">
     <div class="contenedor">
       <div class="paquetes-encabezado">
         <h2>Elige tu paquete</h2>
-        <p class="intro">Precios en pesos con IVA incluido. Premium y Deluxe se apartan con 50% de anticipo.</p>
+        <p class="intro">Precios en pesos con IVA incluido. Premium y Deluxe se apartan con 50% y el resto se paga al aprobar tu invitación.</p>
       </div>
       <div class="planes" id="planes"></div>
+
+      <details class="comparar">
+        <summary>Comparar paquetes punto por punto</summary>
+        <div class="tabla-envoltura">
+          <table class="tabla" id="tabla-comparar"></table>
+        </div>
+      </details>
+
       <div class="extras">
         <p>Puedes agregar a cualquier paquete:</p>
         <ul id="extras"></ul>
@@ -139,50 +221,44 @@
     </div>
   </section>
 
-  <section class="seccion" id="como">
+  <!-- Quiénes somos -->
+  <section class="seccion quienes" id="nosotros">
     <div class="contenedor">
-      <h2>Así de fácil</h2>
-      <ol class="pasos-lista">
-        <li><h3>Haz tu pedido</h3><p>Elige tu paquete y paga con tarjeta o transferencia. Te damos un folio.</p></li>
-        <li><h3>Mándanos tus datos</h3><p>Por WhatsApp nos compartes nombres, fecha, lugares, fotos y tu canción.</p></li>
-        <li><h3>Revísala</h3><p>En 48 horas te enviamos tu invitación para que pidas cambios si hace falta.</p></li>
-        <li><h3>Compártela</h3><p>Recibes tu enlace, por ejemplo darby.mx/tusnombres, y lo mandas a tus invitados.</p></li>
-      </ol>
-    </div>
-  </section>
-
-  <section class="seccion" style="padding-top:0">
-    <div class="contenedor">
-      <h2>Paga como prefieras</h2>
-      <div class="pagos-grid">
-        <div class="pago-caja">
-          <span class="ico"><svg aria-hidden="true"><use href="/img/iconos.svg#tarjeta"/></svg></span>
-          <h3>Tarjeta con Mercado Pago</h3>
-          <p>Crédito o débito en la página segura de Mercado Pago. Nosotros nunca vemos los datos de tu tarjeta.</p>
-        </div>
-        <div class="pago-caja">
-          <span class="ico"><svg aria-hidden="true"><use href="/img/iconos.svg#banco"/></svg></span>
-          <h3>Transferencia SPEI</h3>
-          <p>Al terminar tu pedido te mostramos la CLABE. Nos mandas el comprobante por WhatsApp y empezamos.</p>
-        </div>
+      <div class="quienes-foto" aria-hidden="true">
+        <div class="monograma">D<span>.</span></div>
+        <p>by <b data-config="respaldo">Infinity Films</b></p>
+      </div>
+      <div class="quienes-texto">
+        <h2>Detrás de Darby hay personas, no un robot.</h2>
+        <p class="intro">Darby nace de <b data-config="respaldo">Infinity Films</b>, nuestro estudio de foto y video para bodas y XV años. Llevamos tiempo en eventos y sabemos lo que una familia necesita el día de la fiesta: que todos lleguen, que nadie se pierda y que la invitación se vea tan bonita como el evento.</p>
+        <p class="intro">Cada invitación la revisa una persona antes de publicarse. Te atiende directamente <b data-config="responsable">Miguel Luna</b>, que programa y diseña cada una.</p>
+        <dl class="contacto">
+          <div><dt>WhatsApp</dt><dd><a href="#" data-wa data-config="whatsappVisible">Escríbenos</a></dd></div>
+          <div><dt>Horario</dt><dd data-config="horario">Lunes a sábado, de 9:00 a 20:00</dd></div>
+          <div data-config-fila="ciudad"><dt>Estamos en</dt><dd data-config="ciudad"></dd></div>
+        </dl>
+        <a class="btn btn-borde" href="#" data-wa="Hola, me gustaría una videollamada para conocer las invitaciones antes de comprar.">Agendar una videollamada</a>
       </div>
     </div>
   </section>
 
+  <!-- Preguntas -->
   <section class="seccion preguntas" id="preguntas">
     <div class="contenedor">
       <div>
         <h2>Preguntas frecuentes</h2>
-        <p class="intro">¿Tienes otra duda? <a href="#" data-wa="Hola, tengo una duda sobre las invitaciones.">Escríbenos por WhatsApp</a>.</p>
+        <p class="intro">¿Tienes otra duda? <a href="#" data-wa="Hola, tengo una duda sobre las invitaciones.">Escríbenos por WhatsApp</a> y te contesta una persona.</p>
       </div>
       <div>
-        <details><summary>¿Cuánto tarda mi invitación?</summary><p>48 horas desde que nos mandas tus datos y fotos (72 en Deluxe). Si la necesitas antes, agrega la entrega en 24 horas.</p></details>
+        <details><summary>¿Cómo sé que no me van a quedar mal?</summary><p>No pagas todo por adelantado: apartas con 50% y liquidas cuando ya viste tu invitación funcionando. Si pagas con tarjeta, el cobro lo procesa Mercado Pago. Si transfieres, solo usamos la cuenta a nombre de nuestro responsable, y cada pago queda registrado con tu folio. Además tienes nuestra garantía de entrega.</p></details>
+        <details><summary>¿Qué pasa después de pagar?</summary><p>Te llega tu folio en pantalla y por WhatsApp te pedimos los datos que falten y tus fotos. En 48 horas (72 en Deluxe) te mandamos tu invitación para revisarla.</p></details>
         <details><summary>¿Cómo la comparto?</summary><p>Te damos un enlace como darby.mx/tusnombres. Lo pegas en WhatsApp, Facebook o donde quieras, y se ve con tu foto de portada.</p></details>
         <details><summary>¿Cómo me confirman los invitados?</summary><p>Llenan nombre y número de personas en la invitación, y se abre WhatsApp con el mensaje listo para enviarte. En Deluxe cada familia recibe su enlace con sus pases.</p></details>
         <details><summary>¿Puedo pedir cambios?</summary><p>Sí. Premium incluye dos rondas de cambios y en Deluxe te atendemos por WhatsApp hasta el día del evento. En Básico corregimos cualquier error en los datos.</p></details>
         <details><summary>¿Cuánto tiempo estará en línea?</summary><p>6 meses en Básico y 12 meses en Premium y Deluxe, contados desde que la publicamos.</p></details>
-        <details><summary>¿Es seguro pagar con tarjeta?</summary><p>El pago se hace en la página de Mercado Pago, que protege tus datos. Nosotros solo recibimos la confirmación del pago.</p></details>
+        <details><summary>¿Qué formas de pago aceptan?</summary><p>Tarjeta de crédito o débito con Mercado Pago, y transferencia SPEI. En la página de Mercado Pago pueden aparecer otras opciones, como pago en efectivo.</p></details>
         <details><summary>¿Puedo tener mi propio dominio?</summary><p>Sí, con el extra de dominio propio tu invitación queda en una dirección como anayluis.com durante un año.</p></details>
+        <details><summary>¿Hacen invitaciones para todo México?</summary><p>Sí. Todo es en línea, así que atendemos a clientes de cualquier estado por WhatsApp y videollamada.</p></details>
       </div>
     </div>
   </section>
@@ -190,7 +266,7 @@
   <section class="seccion cierre">
     <div class="contenedor">
       <h2>Tu fecha ya está apartada. Tu invitación, en 48 horas.</h2>
-      <p>Haz tu pedido en dos minutos o cuéntanos tu evento por WhatsApp.</p>
+      <p>Haz tu pedido en cinco minutos o cuéntanos tu evento por WhatsApp.</p>
       <div class="hero-acciones">
         <a class="btn btn-claro" href="/pedido/">Hacer mi pedido</a>
         <a class="btn btn-borde" href="#" data-wa>Escribir por WhatsApp</a>
@@ -201,7 +277,10 @@
 
 <footer class="pie">
   <div class="contenedor">
-    <a class="marca" href="/">Darby<span>.</span></a>
+    <div>
+      <a class="marca" href="/">Darby<span>.</span></a>
+      <p class="pie-respaldo">Invitaciones digitales by <span data-config="respaldo">Infinity Films</span></p>
+    </div>
     <nav aria-label="Pie de página">
       <a href="/pedido/">Hacer pedido</a>
       <a href="/terminos/">Términos</a>

@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<!-- Asegura la diagonal final (/anayluis/) para que carguen las imágenes y estilos de la carpeta. -->
+<script>if(!location.pathname.endsWith('/')&&!/\.[a-z0-9]+$/i.test(location.pathname))location.replace(location.pathname+'/'+location.search+location.hash)</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sofía · Mis XV años</title>
+<meta name="description" content="Mis XV años, 22 de mayo de 2027 en Monterrey. (Invitación de ejemplo de Darby)">
+<meta name="theme-color" content="#3e2a2f">
+<meta property="og:title" content="Sofía · Mis XV años">
+<meta property="og:description" content="Sábado 22 de mayo de 2027 · Monterrey, N.L.">
+<link rel="icon" href="/img/icono.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Pinyon+Script&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root { --fondo:#fbeef2; --tinta:#4a2433; --suave:#85606d; --acento:#b0476b; --oro:#c79a4a; --linea:#f0d3dc; }
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;background:var(--fondo);color:var(--tinta);font:400 17px/1.6 'Figtree',system-ui,sans-serif;text-align:center;overflow-x:hidden}
+  body.cerrado{overflow:hidden}
+  h1,h2{font-family:'Cormorant Garamond',serif;font-weight:400;margin:0;line-height:1.1}
+  h2{font-size:2.3rem} p{margin:0}
+  .script{font-family:'Pinyon Script',cursive;color:var(--acento)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:999px;border:1.5px solid var(--acento);background:var(--acento);color:#fff;font:600 .95rem 'Figtree',sans-serif;text-decoration:none;cursor:pointer}
+  .btn.sec{background:transparent;color:var(--acento)}
+  .btn:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--oro);outline-offset:3px}
+  section{padding:72px 20px;max-width:560px;margin:0 auto}
+  .orn{width:64px;height:64px;margin:0 auto 18px;color:var(--oro)}
+  .sep{width:1px;height:56px;background:var(--linea);margin:0 auto}
+
+  /* Portada */
+  .portada{position:fixed;inset:0;z-index:10;display:grid;place-items:center;background:radial-gradient(circle at 50% 40%,#fff5f8,#f4d3de);padding:24px;transition:opacity .8s,visibility .8s}
+  .abierta .portada{opacity:0;visibility:hidden}
+  .portada .etq{letter-spacing:.12em;font-size:.8rem;color:var(--suave)}
+  .portada .nombres{font-size:clamp(3.6rem,16vw,5.5rem);line-height:1;margin:14px 0 8px}
+  .portada .fecha{font-family:'Cormorant Garamond',serif;font-size:1.4rem;letter-spacing:.12em;margin-bottom:30px}
+  .sello{width:92px;height:92px;border-radius:50%;margin:0 auto 26px;display:grid;place-items:center;font-family:'Pinyon Script',cursive;font-size:2.4rem;color:#fff;background:radial-gradient(circle at 35% 30%,#d77897,var(--acento) 60%,#7b2647);box-shadow:inset 0 0 0 5px rgba(255,255,255,.15),0 8px 18px rgba(62,42,47,.35)}
+
+  .hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;max-width:none;background:linear-gradient(180deg,#fff5f8,var(--fondo))}
+  .hero .nombres{font-size:clamp(4rem,18vw,7rem);line-height:1}
+  .hero .frase{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;color:var(--suave);max-width:28rem;margin:24px auto 0}
+  .cuenta{display:flex;justify-content:center;gap:10px;margin-top:34px}
+  .cuenta div{width:72px;padding:12px 0;border:1px solid var(--linea);border-radius:14px;background:rgba(255,255,255,.6)}
+  .cuenta b{display:block;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.9rem;line-height:1.1}
+  .cuenta small{font-size:.72rem;color:var(--suave)}
+
+  .lugar{background:#fff;border:1px solid var(--linea);border-radius:22px;padding:30px 22px;margin-top:22px}
+  .lugar h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.6rem;margin:0 0 4px}
+  .lugar .hora{font-weight:600;color:var(--acento);margin-bottom:10px}
+  .lugar .dir{color:var(--suave);font-size:.95rem;margin-bottom:18px}
+  .acciones{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+
+  .itinerario{list-style:none;padding:0;margin:30px auto 0;max-width:340px;text-align:left}
+  .itinerario li{display:grid;grid-template-columns:70px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--linea)}
+  .itinerario b{color:var(--acento)}
+
+  .regalo{background:#fff;border:1px solid var(--linea);border-radius:22px;padding:26px 22px;margin-top:18px}
+  .regalo .num{font-weight:600;letter-spacing:.04em;margin:8px 0 14px;word-break:break-all}
+
+  form{display:grid;gap:14px;text-align:left;margin-top:28px;background:#fff;border:1px solid var(--linea);border-radius:22px;padding:26px 22px}
+  label{display:grid;gap:6px;font-weight:600;font-size:.92rem}
+  input,select{width:100%;min-height:48px;border:1.5px solid var(--linea);border-radius:12px;padding:10px 14px;font:inherit;font-weight:400;background:var(--fondo);color:var(--tinta)}
+  .nota{font-size:.85rem;color:var(--suave);text-align:center}
+  footer{padding:40px 20px 60px;font-size:.85rem;color:var(--suave)}
+  footer a{color:var(--acento);font-weight:600}
+  .demo{position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:20;background:var(--tinta);color:#fff;font-size:.78rem;padding:6px 14px;border-radius:999px;white-space:nowrap}
+  .demo a{color:#f2c6cf}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.portada{transition:none}}
+</style>
+</head>
+<body class="cerrado">
+<p class="demo">Invitación de ejemplo · <a href="/">Hecha con Darby</a></p>
+
+<div class="portada" role="dialog" aria-label="Abrir invitación">
+  <div>
+    <div class="sello" aria-hidden="true">XV</div>
+    <p class="etq">ESTÁS INVITADO A LOS XV AÑOS DE</p>
+    <h1 class="script nombres">Sofía</h1>
+    <p class="fecha">22 · 05 · 2027</p>
+    <button class="btn" id="abrir">Abrir invitación</button>
+  </div>
+</div>
+
+<main>
+  <section class="hero">
+    <svg class="orn" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M24 8c4 6 4 10 0 14-4-4-4-8 0-14zM24 40c-4-6-4-10 0-14 4 4 4 8 0 14zM8 24c6-4 10-4 14 0-4 4-8 4-14 0zM40 24c-6 4-10 4-14 0 4-4 8-4 14 0z"/><circle cx="24" cy="24" r="2"/></g></svg>
+    <p style="letter-spacing:.12em;font-size:.8rem;color:var(--suave)">MIS XV AÑOS</p>
+    <h2 class="script nombres" style="margin-top:10px">Sofía</h2>
+    <p class="frase">Con la bendición de Dios y el amor de mis papás, Laura y Javier, quiero celebrar contigo este día tan especial.</p>
+    <div class="cuenta" aria-label="Cuenta regresiva">
+      <div><b id="d">0</b><small>días</small></div>
+      <div><b id="h">0</b><small>horas</small></div>
+      <div><b id="m">0</b><small>minutos</small></div>
+      <div><b id="s">0</b><small>segundos</small></div>
+    </div>
+    <p style="margin-top:28px"><a class="btn sec" id="calendario" href="#">Guardar en mi calendario</a></p>
+  </section>
+
+  <div class="sep"></div>
+
+  <section>
+    <h2>Dónde y cuándo</h2>
+    <p style="color:var(--suave);margin-top:8px">Sábado 22 de mayo de 2027</p>
+    <div class="lugar">
+      <h3>Misa de acción de gracias</h3>
+      <p class="hora">6:00 pm</p>
+      <p class="dir">Parroquia del Roble<br>Centro, Monterrey, N.L.</p>
+      <div class="acciones">
+        <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Parroquia+del+Roble+Monterrey">Google Maps</a>
+        <a class="btn sec" target="_blank" rel="noopener" href="https://waze.com/ul?q=Parroquia%20del%20Roble%20Monterrey&navigate=yes">Waze</a>
+      </div>
+    </div>
+    <div class="lugar">
+      <h3>Recepción</h3>
+      <p class="hora">8:30 pm</p>
+      <p class="dir">Salón Los Arcos<br>San Pedro Garza García, N.L.</p>
+      <div class="acciones">
+        <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=San+Pedro+Garza+Garcia">Google Maps</a>
+        <a class="btn sec" target="_blank" rel="noopener" href="https://waze.com/ul?q=San%20Pedro%20Garza%20Garcia&navigate=yes">Waze</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="sep"></div>
+
+  <section>
+    <h2>Itinerario</h2>
+    <ul class="itinerario">
+      <li><b>6:00 pm</b><span>Misa</span></li>
+      <li><b>8:30 pm</b><span>Recepción y vals</span></li>
+      <li><b>9:30 pm</b><span>Cena</span></li>
+      <li><b>10:30 pm</b><span>Baile sorpresa y fiesta</span></li>
+    </ul>
+    <p style="margin-top:36px;font-family:'Cormorant Garamond',serif;font-size:1.5rem">Código de vestimenta</p>
+    <p style="color:var(--suave)">Formal. El color rosa es solo para la quinceañera.</p>
+  </section>
+
+  <div class="sep"></div>
+
+  <section>
+    <h2>Mesa de regalos</h2>
+    <p style="color:var(--suave);margin-top:8px">Tu presencia es mi mejor regalo. Si quieres tener un detalle conmigo:</p>
+    <div class="regalo">
+      <p><b>Liverpool</b></p>
+      <p class="num" id="evento">Evento 51234567</p>
+      <button class="btn sec" data-copiar="51234567">Copiar número de evento</button>
+    </div>
+    <div class="regalo">
+      <p><b>Transferencia</b></p>
+      <p class="num">CLABE 0121 8000 1234 5678 90</p>
+      <button class="btn sec" data-copiar="012180001234567890">Copiar CLABE</button>
+    </div>
+  </section>
+
+  <div class="sep"></div>
+
+  <section id="confirmar">
+    <h2>¿Me acompañas?</h2>
+    <p style="color:var(--suave);margin-top:8px">Confírmame antes del 1 de mayo.</p>
+    <form id="rsvp">
+      <label>Tu nombre <input name="nombre" required autocomplete="name"></label>
+      <label>¿Asistirás?
+        <select name="asiste"><option>Sí, ahí estaré</option><option>No podré asistir</option></select>
+      </label>
+      <label>Número de personas <select name="personas"><option>1</option><option>2</option><option>3</option><option>4</option></select></label>
+      <button class="btn" type="submit">Confirmar por WhatsApp</button>
+      <p class="nota">En tu invitación real, este mensaje llega directo a tu WhatsApp.</p>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <p class="script" style="font-size:2.4rem">Sofía</p>
+  <p style="margin-top:14px">Invitación hecha con <a href="/">Darby</a></p>
+</footer>
+
+<script>
+  const fecha = new Date('2027-05-22T18:00:00-06:00');
+  document.getElementById('abrir').addEventListener('click', () => {
+    document.body.classList.add('abierta');
+    document.body.classList.remove('cerrado');
+  });
+  const pad = (n) => String(n).padStart(2, '0');
+  function contar() {
+    const t = Math.max(0, fecha - Date.now());
+    document.getElementById('d').textContent = Math.floor(t / 864e5);
+    document.getElementById('h').textContent = pad(Math.floor(t / 36e5) % 24);
+    document.getElementById('m').textContent = pad(Math.floor(t / 6e4) % 60);
+    document.getElementById('s').textContent = pad(Math.floor(t / 1e3) % 60);
+  }
+  contar(); setInterval(contar, 1000);
+
+  document.getElementById('calendario').href =
+    'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent('XV años de Sofía') +
+    '&dates=20270523T000000Z/20270523T080000Z&location=' + encodeURIComponent('Parroquia del Roble, Monterrey');
+  document.getElementById('calendario').target = '_blank';
+
+  document.querySelectorAll('[data-copiar]').forEach((b) => b.addEventListener('click', async () => {
+    const txt = b.textContent;
+    try { await navigator.clipboard.writeText(b.dataset.copiar); b.textContent = 'Copiado'; } catch { b.textContent = b.dataset.copiar; }
+    setTimeout(() => (b.textContent = txt), 2000);
+  }));
+
+  document.getElementById('rsvp').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const f = e.target;
+    if (!f.nombre.value.trim()) { f.nombre.focus(); return; }
+    const msj = `Hola Sofía, soy ${f.nombre.value.trim()}. ${f.asiste.value}` +
+      (f.asiste.selectedIndex === 0 ? ` (${f.personas.value} ${f.personas.value === '1' ? 'persona' : 'personas'}).` : '.');
+    window.open('https://wa.me/?text=' + encodeURIComponent(msj), '_blank', 'noopener');
+  });
+</script>
+</body>
+</html>

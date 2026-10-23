@@ -85,3 +85,19 @@ export function calcularTotal({ paquete, extras = [], modalidad = 'completo' }) 
 
 export const pesos = (n) =>
   '$' + n.toLocaleString('es-MX', { maximumFractionDigits: 0 });
+
+// Diseños de la galería. "demo" es la carpeta de la invitación de ejemplo, si existe.
+export const DISENOS = [
+  { id: 'lacre', nombre: 'Lacre', evento: 'Boda', demo: '/anayluis/', etiqueta: 'Nos casamos', nombres: 'Ana & Luis',
+    fecha: '14 · 02 · 2027', lugar: 'Hacienda Santa Cruz · Puebla', fondo: '#f7efe9', tinta: '#3e2a2f', acento: '#7a2740' },
+  { id: 'quince', nombre: 'Quince', evento: 'XV años', demo: '/sofiaxv/', etiqueta: 'Mis XV años', nombres: 'Sofía',
+    fecha: '22 · 05 · 2027', lugar: 'Salón Los Arcos · Monterrey', fondo: '#fbe9ef', tinta: '#4a2433', acento: '#b0476b' },
+  { id: 'bautizo', nombre: 'Cielo', evento: 'Bautizo', demo: '/bautizoemi/', etiqueta: 'Mi bautizo', nombres: 'Emiliano',
+    fecha: '06 · 03 · 2027', lugar: 'Parroquia San José · Querétaro', fondo: '#eaf1f4', tinta: '#22343d', acento: '#3f6c80' },
+  { id: 'salvia', nombre: 'Salvia', evento: 'Baby shower', etiqueta: 'Baby shower', nombres: 'Bebé Ramírez',
+    fecha: '18 · 04 · 2027', lugar: 'Jardín Las Flores · León', fondo: '#eef2ea', tinta: '#2e3a2c', acento: '#5f7d55' },
+  { id: 'brindis', nombre: 'Brindis', evento: 'Cumpleaños', etiqueta: 'Celebra conmigo', nombres: 'Los 50 de Rosa',
+    fecha: '09 · 01 · 2027', lugar: 'Terraza Alameda · CDMX', fondo: '#faf1df', tinta: '#3d2e12', acento: '#a8781f' },
+  { id: 'gala', nombre: 'Gala', evento: 'Evento de empresa', etiqueta: 'Cena anual', nombres: 'Grupo Norte',
+    fecha: '11 · 12 · 2026', lugar: 'Hotel Mirador · Guadalajara', fondo: '#1f1a24', tinta: '#f3ecf5', acento: '#c9a75b' },
+];
